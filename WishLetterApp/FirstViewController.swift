@@ -12,13 +12,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
 
     @IBOutlet var writtenTable : UITableView!
     
-    var  letterArray:[String] = []
-    
     var saveData: UserDefaults = UserDefaults.standard
     
-    var index = 1
+    var index :Int!
     
-    var letter = (date: Date, text:String, notification: Int, notificationID: String).self
+    //タプル
+    //var letterArray:[Any] = []
+    //var letter:[(date: Date, text:String, notification: Int, notificationID: String)] = []
+    var letterArray:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
