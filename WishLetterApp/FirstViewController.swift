@@ -58,6 +58,15 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     func tableView(_ writtenTable: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
         return true
     }
+    
+    //削除 後から消す
+    func tableView(_ writtenTableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            letterArray.remove(at: indexPath.row)
+            writtenTable.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        }
+        saveData.set(letterArray, forKey: "letter")
+    }
 
 }
 
