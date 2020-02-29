@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     
     @IBOutlet var scrollView: UIScrollView!
     
+    var datePicker: UIDatePicker = UIDatePicker()
     
     @objc func onClickCommitButton (sender: UIButton) {
         if(writeTextView.isFirstResponder){
@@ -60,6 +61,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         writeTextView.inputAccessoryView = custombar
         writeTextView.keyboardType = .default
         writeTextView.delegate = self
+        
+        // ピッカー設定
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale.current
+        selectTextField.inputView = datePicker
+        
+        // 決定バーの生成
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        // テキストフィールドに代入
+        selectTextField.inputView = datePicker
+        selectTextField.inputAccessoryView = toolbar
         
     }
 
@@ -122,5 +139,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
           self.view.transform = CGAffineTransform.identity
         }
       }
+    
+    // 決定ボタン押下
+    @objc func done() {
+        selectTextField.endEditing(true)
+        
+        // 日付のフォーマット
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        selectTextField.text = "\(formatter.string(from: datePicker.date))"
+    }
 
 }
