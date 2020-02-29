@@ -18,6 +18,7 @@
 		2D6572C12404F17000FA45FE /* WishLetterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572C02404F17000FA45FE /* WishLetterAppUITests.swift */; };
 		2D6572D12404F75200FA45FE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D02404F75200FA45FE /* ThirdViewController.swift */; };
 		2D6572D32404F7C900FA45FE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D22404F7C900FA45FE /* TabBarController.swift */; };
+		2D6572D52408F16800FA45FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D42408F16800FA45FE /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		2D6572C22404F17000FA45FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6572D02404F75200FA45FE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		2D6572D22404F7C900FA45FE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2D6572D42408F16800FA45FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				2D65729C2404F16E00FA45FE /* AppDelegate.swift */,
 				2D65729E2404F16E00FA45FE /* SceneDelegate.swift */,
 				2D6572A02404F16E00FA45FE /* FirstViewController.swift */,
+				2D6572D42408F16800FA45FE /* ViewController.swift */,
 				2D6572A22404F16E00FA45FE /* SecondViewController.swift */,
 				2D6572D02404F75200FA45FE /* ThirdViewController.swift */,
 				2D6572D22404F7C900FA45FE /* TabBarController.swift */,
@@ -272,6 +275,7 @@
 				2D6572A12404F16E00FA45FE /* FirstViewController.swift in Sources */,
 				2D6572D12404F75200FA45FE /* ThirdViewController.swift in Sources */,
 				2D6572D32404F7C900FA45FE /* TabBarController.swift in Sources */,
+				2D6572D52408F16800FA45FE /* ViewController.swift in Sources */,
 				2D65729D2404F16E00FA45FE /* AppDelegate.swift in Sources */,
 				2D65729F2404F16E00FA45FE /* SceneDelegate.swift in Sources */,
 			);
