@@ -36,13 +36,14 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
             letterArray = saveData.object(forKey: "letter") as! [String]
         }
         
+        print(letterArray)
         writtenTable.reloadData()
         
     }
     
     //追加ボタン
     @IBAction func toWriteButton(){
-        
+        performSegue(withIdentifier: "toViewController", sender: nil)
     }
     
     func tableView(_ writtenTable: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,3 +71,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
 
 }
 
+extension FirstViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.writtenTable.reloadData()
+    }
+}

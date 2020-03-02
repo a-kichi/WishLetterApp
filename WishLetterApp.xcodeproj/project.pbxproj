@@ -19,6 +19,7 @@
 		2D6572D12404F75200FA45FE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D02404F75200FA45FE /* ThirdViewController.swift */; };
 		2D6572D32404F7C900FA45FE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D22404F7C900FA45FE /* TabBarController.swift */; };
 		2D6572D52408F16800FA45FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D42408F16800FA45FE /* ViewController.swift */; };
+		2D87D5E9240C11D400253060 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87D5E8240C11D400253060 /* ReceiveViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2D6572D02404F75200FA45FE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		2D6572D22404F7C900FA45FE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2D6572D42408F16800FA45FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D87D5E8240C11D400253060 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				2D6572A02404F16E00FA45FE /* FirstViewController.swift */,
 				2D6572D42408F16800FA45FE /* ViewController.swift */,
 				2D6572A22404F16E00FA45FE /* SecondViewController.swift */,
+				2D87D5E8240C11D400253060 /* ReceiveViewController.swift */,
 				2D6572D02404F75200FA45FE /* ThirdViewController.swift */,
 				2D6572D22404F7C900FA45FE /* TabBarController.swift */,
 				2D6572A42404F16E00FA45FE /* Main.storyboard */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D87D5E9240C11D400253060 /* ReceiveViewController.swift in Sources */,
 				2D6572A32404F16E00FA45FE /* SecondViewController.swift in Sources */,
 				2D6572A12404F16E00FA45FE /* FirstViewController.swift in Sources */,
 				2D6572D12404F75200FA45FE /* ThirdViewController.swift in Sources */,

@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     
     @IBOutlet var scrollView: UIScrollView!
     
+    @IBOutlet var giftImageView: UIImageView!
+    
     var datePicker: UIDatePicker = UIDatePicker()
     
     @objc func onClickCommitButton (sender: UIButton) {
@@ -27,7 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     
     var saveData: UserDefaults = UserDefaults.standard
     
-    var index = 1
+    var index = 0
     
     //タプル
     //var letterArray:[Any] = []
@@ -150,4 +152,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         selectTextField.text = "\(formatter.string(from: datePicker.date))"
     }
 
+}
+
+extension ViewController {
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        guard let presentationController = presentationController else { return }
+        if #available(iOS 13, *) {
+            presentationController.delegate?.presentationControllerDidDismiss?(presentationController)
+        }
+    }
 }
