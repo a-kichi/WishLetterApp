@@ -32,15 +32,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     var index = 0
     
     //タプル
-    //var letterArray:[Any] = []
-    //var letter:[(date: Date, text:String, notification: Int, notificationID: String)] = []
-    var letterArray:[String] = []
+    //var letters:[(sentdate: Date, text:String, span: Int, notificationID: String)] = []
+    var sentDateArray: [Date] = []
+    var letterTextArray: [String] = []
+    var spanArray: [Int] = []
+    var notificationIDArray: [String] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if saveData.object(forKey: "letter") != nil {
-            letterArray = saveData.object(forKey: "letter") as! [String]
+        if saveData.object(forKey: "sentDate") != nil {
+            sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
+            letterTextArray  = saveData.object(forKey: "letterText") as! [String]
+            spanArray = saveData.object(forKey: "span") as! [Int]
+            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
+        }
+        
+        if saveData.object(forKey: "index") != nil {
+            index = saveData.object(forKey: "index") as! Int
+            
         }
         
         self.configureObserver()
@@ -84,13 +94,33 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
 
     
     @IBAction func toSendButton(){
+        
+        //現在を取得
+        let sentDate = Date()
+        //選択した日付
+        let receive = datePicker.date
+        //差分を出す
+        let span = receive.timeIntervalSince(sentDate)
+        //各タプル
+        //let letter = (sentdate: sentDate, text:writeTextView.text!, span: Int(span), notificationID: String(index))
+        
+        //各配列
+        sentDateArray.append(sentDate)
+        letterTextArray.append(writeTextView.text)
+        spanArray.append(Int(span))
+        notificationIDArray.append(String(index))
+        
         index += 1
-        letterArray.append(writeTextView.text)
-        saveData.set(letterArray, forKey:"letter")
-        //print(index)
+        saveData.set(index, forKey:"index")
+
+        
+        saveData.set(sentDateArray, forKey: "sentDate")
+        saveData.set(letterTextArray, forKey: "letterText")
+        saveData.set(spanArray, forKey: "span")
+        saveData.set(notificationIDArray, forKey: "notificationID")
+        
         dismiss(animated: true, completion: nil)
-         
-        print(index)
+
     }
     
     
@@ -100,7 +130,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
       return true
     }
     
-    // Notification設定
+    // キーボードのNotification設定
     func configureObserver() {
           
       let notification = NotificationCenter.default
@@ -120,6 +150,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
       )
     }
     
+    //キーボードの設定
       // Notificationの削除
       func removeObserver() {
         NotificationCenter.default.removeObserver(self)

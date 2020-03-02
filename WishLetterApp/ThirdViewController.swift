@@ -8,23 +8,50 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UINavigationControllerDelegate , UITextFieldDelegate{
 
+    @IBOutlet var profileImage: UIImageView!
+    
+    @IBOutlet var UserNameTextField: UITextField!
+    
+    @IBOutlet var birthdayTextField: UITextField!
+    
+    @IBOutlet var goalTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        UserNameTextField.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //リターンキー
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true
     }
-    */
 
+    //ImageViewTapAction
+    @IBAction func TapImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let ImagePicker = UIImagePickerController()
+            ImagePicker.sourceType = .photoLibrary
+            ImagePicker.delegate = self
+            
+            ImagePicker.allowsEditing = true
+            
+            present(ImagePicker, animated: true, completion: nil)
+            
+        }
+    
+    }
+    
+    //画像表示
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        profileImage.image = info[.editedImage]as? UIImage
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+//締め
 }

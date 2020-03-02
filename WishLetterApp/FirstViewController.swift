@@ -19,7 +19,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     //タプル
     //var letterArray:[Any] = []
     //var letter:[(date: Date, text:String, notification: Int, notificationID: String)] = []
-    var letterArray:[String] = []
+    
+    var lettersArray:[String] = []
+    var sentDateArray: [Date] = []
+    var letterTextArray: [String] = []
+    var spanArray: [Int] = []
+    var notificationIDArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +37,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
         
-        if saveData.object(forKey: "letter") != nil{
-            letterArray = saveData.object(forKey: "letter") as! [String]
+        if saveData.object(forKey: "sentDate") != nil {
+            sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
+            letterTextArray  = saveData.object(forKey: "letterText") as! [String]
+            spanArray = saveData.object(forKey: "span") as! [Int]
+            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
         }
         
-        print(letterArray)
         writtenTable.reloadData()
         
     }
@@ -47,12 +54,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     }
     
     func tableView(_ writtenTable: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return letterArray.count
+        return letterTextArray.count
     }
     
     func tableView(_ writtenTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = writtenTable.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = letterArray[indexPath.row]
+        cell?.textLabel?.text = letterTextArray[indexPath.row]
         return cell!
     }
 
@@ -63,16 +70,26 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     //削除 後から消す
     func tableView(_ writtenTableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            letterArray.remove(at: indexPath.row)
+            sentDateArray.remove(at: indexPath.row)
+            letterTextArray.remove(at: indexPath.row)
+            spanArray.remove(at: indexPath.row)
+            notificationIDArray.remove(at: indexPath.row)
+            
             writtenTable.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
-        saveData.set(letterArray, forKey: "letter")
+        
+        saveData.set(sentDateArray, forKey: "sentDate")
+        saveData.set(letterTextArray, forKey: "letterText")
+        saveData.set(spanArray, forKey: "span")
+        saveData.set(notificationIDArray, forKey: "notificationID")
     }
-
+    
+//しめ
 }
 
 extension FirstViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+
         self.writtenTable.reloadData()
     }
 }
