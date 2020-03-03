@@ -21,6 +21,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     var spanArray: [Int] = []
     var notificationIDArray: [String] = []
     
+    var tapCellNumber :Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,27 +37,54 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         receiveTable.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    //DateをStringにしてる
+    private func dateString(date: NSDate) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
+        dateFormatter.dateFormat = "yyyy年MM月dd日 "
+        let dateString: String = dateFormatter.string(from: date as Date)
+        return dateString
+    }
     //セル
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //firstIndex=差分を超えた要素の配列番号
+        if let firstIndex = spanArray.firstIndex(where: {$0 <= 0}) {
+            print("インデックス番号: \(firstIndex)が差分を超えたもの")
+        }
+        //sentDateArray[firstIndex]を数えたい
         return letterTextArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = receiveTable.dequeueReusableCell(withIdentifier: "Cell")
         
-        //表示したいものだけを表示させるif文
-        //textLabelに表示したいものだけを
-        cell?.textLabel?.text = letterTextArray[indexPath.row]
+        //sentDateArray[firstIndex]だけを表示したい
+        cell?.textLabel?.text = "\(dateString(date: sentDateArray[indexPath.row] as NSDate))から届きました"
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)番")
-        //画面遷移
-        performSegue(withIdentifier: "toReceiveViewController", sender: nil)
-        //セル選択を解除
-        receiveTable.deselectRow(at: indexPath, animated: true)
-      }
+          print("\(indexPath.row)が選択されました")
+            //タップしたセル番号をtapCellNumberとして値わたし
+            tapCellNumber = indexPath.row
+            //画面遷移
+            performSegue(withIdentifier: "toReceiveViewController", sender: nil)
+            //セル選択を解除
+            tableView.deselectRow(at: indexPath, animated: true)
+          }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+            if segue.identifier == "toReceiveViewController" {
+                let nextVC: ReceiveViewController = (segue.destination as? ReceiveViewController)!
+                nextVC.getNumber = tapCellNumber
+            }
+        }
+    
     
     //ローカル通知
     

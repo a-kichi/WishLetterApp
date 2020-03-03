@@ -20,7 +20,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     //var letterArray:[Any] = []
     //var letter:[(date: Date, text:String, notification: Int, notificationID: String)] = []
     
-    var lettersArray:[String] = []
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
@@ -45,12 +44,24 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
         }
         
         writtenTable.reloadData()
+
+        print(sentDateArray)
         
+    }
+    
+    
+    private func dateString(date: NSDate) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
+        dateFormatter.dateFormat = "yyyy年MM月dd日 "
+        let dateString: String = dateFormatter.string(from: date as Date)
+        return dateString
     }
     
     //追加ボタン
     @IBAction func toWriteButton(){
         performSegue(withIdentifier: "toViewController", sender: nil)
+
     }
     
     func tableView(_ writtenTable: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +70,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     
     func tableView(_ writtenTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = writtenTable.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = letterTextArray[indexPath.row]
+        //--の自分へにしたい
+        cell?.textLabel?.text = "\(dateString(date: sentDateArray[indexPath.row] as NSDate))に書いた手紙"
         return cell!
     }
 
