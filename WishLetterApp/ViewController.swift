@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
-    var notificationIDArray: [String] = []
+    var receiveDateArray: [String] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
             sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
             letterTextArray  = saveData.object(forKey: "letterText") as! [String]
             spanArray = saveData.object(forKey: "span") as! [Int]
-            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
+            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
         }
         
         if saveData.object(forKey: "index") != nil {
@@ -92,6 +92,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         
     }
 
+    @IBAction func toBackButton() {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func toSendButton(){
         
@@ -108,7 +111,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         sentDateArray.append(sentDate)
         letterTextArray.append(writeTextView.text)
         spanArray.append(Int(span))
-        notificationIDArray.append(String(index))
+        receiveDateArray.append(selectTextField.text!)
         
         index += 1
         saveData.set(index, forKey:"index")
@@ -117,7 +120,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         saveData.set(sentDateArray, forKey: "sentDate")
         saveData.set(letterTextArray, forKey: "letterText")
         saveData.set(spanArray, forKey: "span")
-        saveData.set(notificationIDArray, forKey: "notificationID")
+        saveData.set(receiveDateArray, forKey: "receiveDate")
         
         dismiss(animated: true, completion: nil)
 

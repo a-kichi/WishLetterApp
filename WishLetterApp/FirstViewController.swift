@@ -23,7 +23,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
-    var notificationIDArray: [String] = []
+    var receiveDateArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
             sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
             letterTextArray  = saveData.object(forKey: "letterText") as! [String]
             spanArray = saveData.object(forKey: "span") as! [Int]
-            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
+            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
         }
         
         writtenTable.reloadData()
@@ -71,7 +71,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     func tableView(_ writtenTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = writtenTable.dequeueReusableCell(withIdentifier: "Cell")
         //--の自分へにしたい
-        cell?.textLabel?.text = "\(dateString(date: sentDateArray[indexPath.row] as NSDate))に書いた手紙"
+        cell?.textLabel?.text = "\(receiveDateArray[indexPath.row])の自分へ"
         return cell!
     }
 
@@ -85,7 +85,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
             sentDateArray.remove(at: indexPath.row)
             letterTextArray.remove(at: indexPath.row)
             spanArray.remove(at: indexPath.row)
-            notificationIDArray.remove(at: indexPath.row)
+            receiveDateArray.remove(at: indexPath.row)
             
             writtenTable.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
@@ -93,7 +93,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
         saveData.set(sentDateArray, forKey: "sentDate")
         saveData.set(letterTextArray, forKey: "letterText")
         saveData.set(spanArray, forKey: "span")
-        saveData.set(notificationIDArray, forKey: "notificationID")
+        saveData.set(receiveDateArray, forKey: "receiveDate")
     }
     
 //しめ

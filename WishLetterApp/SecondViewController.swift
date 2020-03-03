@@ -19,7 +19,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
-    var notificationIDArray: [String] = []
+    var receiveDateArray: [String] = []
     
     var tapCellNumber :Int?
     
@@ -32,7 +32,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
             letterTextArray  = saveData.object(forKey: "letterText") as! [String]
             spanArray = saveData.object(forKey: "span") as! [Int]
-            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
+            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
         }
         
         receiveTable.dataSource = self
@@ -88,55 +88,5 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     
-    
-    //ローカル通知
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        // notification center (singleton)
-        let center = UNUserNotificationCenter.current()
-
-        // ユーザに通知の許可を求める
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("Allowed")
-            } else {
-                print("Didn't allowed")
-            }
-        }
-
-        return true
-    }
-    
-    @IBAction func setNotification(_ sender: UIButton) {
-
-        //かえる
-        let seconds = 10
-
-        // 通知の発行: タイマーを指定して発行
-
-        // content
-        let content = UNMutableNotificationContent()
-        content.title = "タイトル"
-        content.body = "ボディ文"
-
-        // trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(seconds),
-                                                        repeats: false)
-
-        // request includes content & trigger
-        let request = UNNotificationRequest(identifier: "TIMER\(seconds)",
-                                            content: content,
-                                            trigger: trigger)
-
-        // schedule notification by adding request to notification center
-        let center = UNUserNotificationCenter.current()
-        center.add(request) { (error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-
 }
 

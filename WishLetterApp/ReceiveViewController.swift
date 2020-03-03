@@ -21,7 +21,7 @@ class ReceiveViewController: UIViewController {
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
-    var notificationIDArray: [String] = []
+    var receiveDateArray: [String] = []
     
     var getNumber : Int!
 
@@ -33,7 +33,7 @@ class ReceiveViewController: UIViewController {
             sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
             letterTextArray  = saveData.object(forKey: "letterText") as! [String]
             spanArray = saveData.object(forKey: "span") as! [Int]
-            notificationIDArray = saveData.object(forKey: "notificationID") as! [String]
+            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
         }
 
     }
