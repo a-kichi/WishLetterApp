@@ -23,6 +23,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     
     var tapCellNumber :Int?
     
+    var receiveTextArray: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,15 +57,16 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         //firstIndex=差分を超えた要素の配列番号
         if let firstIndex = spanArray.firstIndex(where: {$0 <= 0}) {
             print("インデックス番号: \(firstIndex)が差分を超えたもの")
+            receiveTextArray = [letterTextArray[firstIndex]]
         }
-        //sentDateArray[firstIndex]を数えたい
-        return letterTextArray.count
+        
+        print(receiveTextArray.count)
+        return receiveTextArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = receiveTable.dequeueReusableCell(withIdentifier: "Cell")
-        
-        //sentDateArray[firstIndex]だけを表示したい
+
         cell?.textLabel?.text = "\(dateString(date: sentDateArray[indexPath.row] as NSDate))から届きました"
         return cell!
     }

@@ -30,6 +30,8 @@ class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UI
       textField.resignFirstResponder()
       return true
     }
+    
+    
 
     //ImageViewTapAction
     @IBAction func TapImage(_ sender: Any) {
