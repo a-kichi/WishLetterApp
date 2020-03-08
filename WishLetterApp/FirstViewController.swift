@@ -44,8 +44,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
         }
         
         writtenTable.reloadData()
-
-        print(sentDateArray)
         
     }
     

@@ -23,7 +23,7 @@ class ReceiveViewController: UIViewController {
     var spanArray: [Int] = []
     var receiveDateArray: [String] = []
     
-    var getNumber : Int!
+    var getInfo : Letter!
 
     
     override func viewDidLoad() {
@@ -40,11 +40,10 @@ class ReceiveViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(getNumber as Int)
-        if getNumber != nil{
-            print(sentDateArray[getNumber!])
-            dearLabel.text = "\(dateString(date: sentDateArray[getNumber!] as NSDate))の自分から届きました"
-            receiveTextView.text = letterTextArray[getNumber!]
+        
+        if getInfo != nil{
+            dearLabel.text = "\(dateString(date: getInfo.sentDate as NSDate))の自分から届きました"
+            receiveTextView.text = getInfo.letterText
         }
     }
     
