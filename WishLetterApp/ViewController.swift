@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate{
     
     @IBOutlet var selectTextField: UITextField!
     
@@ -31,30 +31,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextF
     
     var index = 0
     
-    //タプル
-    //var letters:[(sentdate: Date, text:String, span: Int, notificationID: String)] = []
     var sentDateArray: [Date] = []
     var letterTextArray: [String] = []
     var spanArray: [Int] = []
     var receiveDateArray: [String] = []
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if saveData.object(forKey: "sentDate") != nil {
-            sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
-            letterTextArray  = saveData.object(forKey: "letterText") as! [String]
-            spanArray = saveData.object(forKey: "span") as! [Int]
-            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
-        }
-        
-        if saveData.object(forKey: "index") != nil {
-            index = saveData.object(forKey: "index") as! Int
-            
-        }
-        
-        self.configureObserver()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +72,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextF
         selectTextField.inputAccessoryView = toolbar
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if saveData.object(forKey: "sentDate") != nil {
+            sentDateArray  = saveData.object(forKey: "sentDate") as! [Date]
+            letterTextArray  = saveData.object(forKey: "letterText") as! [String]
+            spanArray = saveData.object(forKey: "span") as! [Int]
+            receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
+        }
+        
+        if saveData.object(forKey: "index") != nil {
+            index = saveData.object(forKey: "index") as! Int
+            
+        }
+        
+        self.configureObserver()
+    }
+
 
     @IBAction func toBackButton() {
         dismiss(animated: true, completion: nil)
@@ -191,8 +191,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextF
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let ImagePicker = UIImagePickerController()
             ImagePicker.sourceType = .photoLibrary
-            ImagePicker.delegate = (self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate)
-            
+            ImagePicker.delegate = self
             ImagePicker.allowsEditing = true
             
             present(ImagePicker, animated: true, completion: nil)

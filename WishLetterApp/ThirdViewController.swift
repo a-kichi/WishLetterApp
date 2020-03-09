@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UINavigationControllerDelegate , UITextFieldDelegate{
+class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     @IBOutlet var profileImage: UIImageView!
     
@@ -23,6 +23,8 @@ class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UI
         super.viewDidLoad()
 
         UserNameTextField.delegate = self
+        birthdayTextField.delegate = self
+        goalTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
