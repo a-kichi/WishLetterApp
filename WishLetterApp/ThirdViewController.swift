@@ -59,5 +59,4 @@ class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UI
         
     }
     
-//締め
 }

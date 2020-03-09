@@ -15,18 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        UNUserNotificationCenter.current().delegate = self
-        
-        UNUserNotificationCenter.current().requestAuthorization(options:
-                                    [.alert,.sound,.badge]) { (granted, error) in
-            
+        let center = UNUserNotificationCenter.current()
+        // トリガーされている全ての通知をトリガー解除する
+        center.removeAllPendingNotificationRequests();
+        // 「通知を許可しますか？」ダイアログを出す
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in if granted { print("通知許可")}
         }
         
+        let content = UNMutableNotificationContent()
+        content.title = "通知タイトル"
+        content.body = "通知本文"
+        content.sound = UNNotificationSound.default
+        // 1秒後に通知を出すようにする
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "HogehogeNotification", content: content, trigger: trigger)
+        
+        center.add(request)
+        center.delegate = self
         return true
     }
-
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

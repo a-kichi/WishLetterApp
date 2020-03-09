@@ -75,8 +75,9 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         sortedLetterArray.sort(by: {(a, b) -> Bool in
             return a.receiveDate < b.receiveDate
         })
-        
         receiveTable.reloadData()
+        
+        
     }
     
     //DateをStringにしてる
@@ -116,7 +117,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)が選択されました")
         //タップしたセル番号をtapCellNumberとして値わたし
-        tapCellInfo = letterArray[indexPath.row]
+        tapCellInfo = sortedLetterArray[indexPath.row]
         //画面遷移
         performSegue(withIdentifier: "toReceiveViewController", sender: nil)
         //セル選択を解除
@@ -129,6 +130,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             nextVC.getInfo = tapCellInfo
         }
     }
+    
+    
     
 }
 

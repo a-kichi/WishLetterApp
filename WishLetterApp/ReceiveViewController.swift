@@ -26,6 +26,9 @@ class ReceiveViewController: UIViewController {
     
     var getInfo : Letter!
 
+    var letterArray: [Letter] = []
+     
+    var sortedLetterArray: [Letter] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +41,24 @@ class ReceiveViewController: UIViewController {
         }
 
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if getInfo != nil{
             dearLabel.text = "\(dateString(date: getInfo.sentDate as NSDate))の自分から届きました"
             receiveTextView.text = getInfo.letterText
         }
     }
+    
+    //StringをDateに
+     func parseStringDate(str: String) -> Date {
+         let formatter = DateFormatter()
+         let localeStyle = Locale(identifier: "en_US_POSIX")
+         formatter.locale = localeStyle
+         formatter.timeZone = TimeZone(secondsFromGMT: 0)
+         formatter.dateFormat = "yyyy年MM月dd日"
+         return formatter.date(from: str)!
+     }
     
     private func dateString(date: NSDate) -> String {
         let dateFormatter = DateFormatter()

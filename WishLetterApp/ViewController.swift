@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate{
     
     @IBOutlet var selectTextField: UITextField!
     
@@ -97,7 +97,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     }
     
     @IBAction func toSendButton(){
-        
         //現在を取得
         let sentDate = Date()
         //選択した日付
@@ -184,6 +183,29 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年MM月dd日"
         selectTextField.text = "\(formatter.string(from: datePicker.date))"
+    }
+    
+    
+    //ImageViewTapAction
+    @IBAction func TapImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let ImagePicker = UIImagePickerController()
+            ImagePicker.sourceType = .photoLibrary
+            ImagePicker.delegate = (self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+            
+            ImagePicker.allowsEditing = true
+            
+            present(ImagePicker, animated: true, completion: nil)
+            
+        }
+    
+    }
+    
+    //画像表示
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        giftImageView.image = info[.editedImage]as? UIImage
+        dismiss(animated: true, completion: nil)
+        
     }
 
 }
