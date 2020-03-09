@@ -27,6 +27,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     
     var letterArray: [Letter] = []
     
+    var sortedLetterArray: [Letter] = []
+    
     let letterInfo: (sentdate: Date, text: String, span: Int, receivedate: String)? = nil
     
     override func viewDidLoad() {
@@ -46,6 +48,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             receiveDateArray = saveData.object(forKey: "receiveDate") as! [String]
         }
         
+        sortedLetterArray.removeAll()
+        
         // まとめる
         // からの配列つくる
         // UserDefaultsから取り出した４つの配列をまとめる
@@ -61,6 +65,16 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             //letterArrayは０番０チームの配列
             letterArray.append(letterInfo)
         }
+        let todayDate = Date()
+        for letter in letterArray {
+            if todayDate >= parseStringDate(str: letter.receiveDate) {
+                sortedLetterArray.append(letter)
+            }
+        }
+        
+        sortedLetterArray.sort(by: {(a, b) -> Bool in
+            return a.receiveDate < b.receiveDate
+        })
         
         receiveTable.reloadData()
     }
@@ -69,28 +83,30 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     private func dateString(date: NSDate) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
-        dateFormatter.dateFormat = "yyyy年MM月dd日 "
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
         let dateString: String = dateFormatter.string(from: date as Date)
         return dateString
+    }
+    
+    //StringをDateに
+    func parseStringDate(str: String) -> Date {
+        let formatter = DateFormatter()
+        let localeStyle = Locale(identifier: "en_US_POSIX")
+        formatter.locale = localeStyle
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy年MM月dd日"
+        return formatter.date(from: str)!
     }
     
     //セル
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //firstIndex=差分を超えた要素の配列番号
-        //if let firstIndex = spanArray.firstIndex(where: {$0 <= 0}) {
-        //    receiveTextArray = [letterTextArray[firstIndex]]
-        //}
-        let t = spanArray.filter({$0 <= 0})
-        return t.count
+        return sortedLetterArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = receiveTable.dequeueReusableCell(withIdentifier: "Cell")
         
-        let sortedLetterArray = letterArray.sorted(by: {(a, b) -> Bool in
-            return a.span < b.span
-        })
 
         cell?.textLabel?.text = "\(dateString(date: sortedLetterArray[indexPath.row].sentDate as NSDate))から届きました"
         

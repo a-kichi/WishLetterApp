@@ -25,6 +25,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
     var spanArray: [Int] = []
     var receiveDateArray: [String] = []
     
+    var letterArray: [Letter] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

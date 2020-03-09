@@ -119,11 +119,11 @@
 				2D87D5E8240C11D400253060 /* ReceiveViewController.swift */,
 				2D6572D02404F75200FA45FE /* ThirdViewController.swift */,
 				2D6572D22404F7C900FA45FE /* TabBarController.swift */,
+				2D7A97E32411776F0083A9BF /* Letter.swift */,
 				2D6572A42404F16E00FA45FE /* Main.storyboard */,
 				2D6572A72404F16F00FA45FE /* Assets.xcassets */,
 				2D6572A92404F16F00FA45FE /* LaunchScreen.storyboard */,
 				2D6572AC2404F16F00FA45FE /* Info.plist */,
-				2D7A97E32411776F0083A9BF /* Letter.swift */,
 			);
 			path = WishLetterApp;
 			sourceTree = "<group>";

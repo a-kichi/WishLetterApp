@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ReceiveViewController: UIViewController {
 
     @IBOutlet var dearLabel: UILabel!

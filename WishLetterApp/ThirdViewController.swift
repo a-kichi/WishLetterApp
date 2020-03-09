@@ -25,10 +25,14 @@ class ThirdViewController: UIViewController,UIImagePickerControllerDelegate , UI
         UserNameTextField.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     //リターンキー
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      textField.resignFirstResponder()
-      return true
+        textField.resignFirstResponder()
+        return true
     }
     
     

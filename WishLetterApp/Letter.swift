@@ -10,10 +10,10 @@ import Foundation
 
 class Letter {
     
-    var sentDate : Date!
-    var letterText: String!
-    var span: Int!
-    var receiveDate: String!
+    var sentDate : Date
+    var letterText: String
+    var span: Int
+    var receiveDate: String
     
     init(sentDate: Date, letterText: String, span: Int, receiveDate: String){
         
