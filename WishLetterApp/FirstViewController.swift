@@ -33,6 +33,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITextFieldD
         writtenTable.dataSource = self
         writtenTable.delegate = self
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

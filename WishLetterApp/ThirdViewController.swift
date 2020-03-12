@@ -8,27 +8,32 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate,UIScrollViewDelegate{
 
     @IBOutlet var profileImage: UIImageView!
-    
-    @IBOutlet var UserNameTextField: UITextField!
-    
+
+    @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var birthdayTextField: UITextField!
-    
     @IBOutlet var goalTextField: UITextField!
+    
+    @IBOutlet var profileScrollView: UIScrollView!
+    
+    var profileSaveData: UserDefaults = UserDefaults.standard
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UserNameTextField.delegate = self
+        userNameTextField.delegate = self
         birthdayTextField.delegate = self
         goalTextField.delegate = self
+        profileScrollView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.configureObserver()
     }
     
     //リターンキー
@@ -37,6 +42,9 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return true
     }
     
+    @IBAction func toUpdateProfileButton(_ sender: Any) {
+        
+    }
     
 
     //ImageViewTapAction
@@ -59,6 +67,48 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         profileImage.image = info[.editedImage]as? UIImage
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    // Notificationを設定
+    func configureObserver() {
+          
+      let notification = NotificationCenter.default
+
+      notification.addObserver(
+        self,
+        selector: #selector(self.keyboardWillShow(notification:)),
+        name: UIResponder.keyboardWillShowNotification,
+        object: nil
+      )
+          
+      notification.addObserver(
+        self,
+        selector: #selector(self.keyboardWillHide(notification:)),
+        name: UIResponder.keyboardWillHideNotification,
+        object: nil
+      )
+    }
+      
+    // Notificationを削除
+    func removeObserver() {
+      NotificationCenter.default.removeObserver(self)
+    }
+      
+    // キーボードが現れたときにviewをずらす
+    @objc func keyboardWillShow(notification: Notification?) {
+      let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+      let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+      UIView.animate(withDuration: duration!) {
+        self.view.transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+      }
+    }
+      
+    // キーボードが消えたときにviewを戻す
+    @objc func keyboardWillHide(notification: Notification?) {
+      let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
+      UIView.animate(withDuration: duration!) {
+        self.view.transform = CGAffineTransform.identity
+      }
     }
     
 }

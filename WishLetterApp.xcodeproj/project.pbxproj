@@ -20,6 +20,13 @@
 		2D6572D32404F7C900FA45FE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D22404F7C900FA45FE /* TabBarController.swift */; };
 		2D6572D52408F16800FA45FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6572D42408F16800FA45FE /* ViewController.swift */; };
 		2D7A97E42411776F0083A9BF /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A97E32411776F0083A9BF /* Letter.swift */; };
+		2D7A97E624169EAF0083A9BF /* GiftImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A97E524169EAF0083A9BF /* GiftImageCollectionViewController.swift */; };
+		2D7A97F2241750DD0083A9BF /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A97ED241750DD0083A9BF /* dog.png */; };
+		2D7A97F3241750DD0083A9BF /* cake.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A97EE241750DD0083A9BF /* cake.png */; };
+		2D7A97F4241750DD0083A9BF /* coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A97EF241750DD0083A9BF /* coffee.png */; };
+		2D7A97F5241750DD0083A9BF /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A97F0241750DD0083A9BF /* present.png */; };
+		2D7A97F6241750DD0083A9BF /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A97F1241750DD0083A9BF /* trip.png */; };
+		2D7A97F8241824B50083A9BF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A97F7241824B50083A9BF /* Profile.swift */; };
 		2D87D5E9240C11D400253060 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87D5E8240C11D400253060 /* ReceiveViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +67,13 @@
 		2D6572D22404F7C900FA45FE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2D6572D42408F16800FA45FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2D7A97E32411776F0083A9BF /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		2D7A97E524169EAF0083A9BF /* GiftImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftImageCollectionViewController.swift; sourceTree = "<group>"; };
+		2D7A97ED241750DD0083A9BF /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
+		2D7A97EE241750DD0083A9BF /* cake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cake.png; sourceTree = "<group>"; };
+		2D7A97EF241750DD0083A9BF /* coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffee.png; sourceTree = "<group>"; };
+		2D7A97F0241750DD0083A9BF /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
+		2D7A97F1241750DD0083A9BF /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
+		2D7A97F7241824B50083A9BF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2D87D5E8240C11D400253060 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,15 +125,18 @@
 		2D65729B2404F16E00FA45FE /* WishLetterApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D7A97EC241750DD0083A9BF /* giftImage */,
 				2D65729C2404F16E00FA45FE /* AppDelegate.swift */,
 				2D65729E2404F16E00FA45FE /* SceneDelegate.swift */,
 				2D6572A02404F16E00FA45FE /* FirstViewController.swift */,
 				2D6572D42408F16800FA45FE /* ViewController.swift */,
+				2D7A97E524169EAF0083A9BF /* GiftImageCollectionViewController.swift */,
 				2D6572A22404F16E00FA45FE /* SecondViewController.swift */,
 				2D87D5E8240C11D400253060 /* ReceiveViewController.swift */,
 				2D6572D02404F75200FA45FE /* ThirdViewController.swift */,
 				2D6572D22404F7C900FA45FE /* TabBarController.swift */,
 				2D7A97E32411776F0083A9BF /* Letter.swift */,
+				2D7A97F7241824B50083A9BF /* Profile.swift */,
 				2D6572A42404F16E00FA45FE /* Main.storyboard */,
 				2D6572A72404F16F00FA45FE /* Assets.xcassets */,
 				2D6572A92404F16F00FA45FE /* LaunchScreen.storyboard */,
@@ -144,6 +161,19 @@
 				2D6572C22404F17000FA45FE /* Info.plist */,
 			);
 			path = WishLetterAppUITests;
+			sourceTree = "<group>";
+		};
+		2D7A97EC241750DD0083A9BF /* giftImage */ = {
+			isa = PBXGroup;
+			children = (
+				2D7A97EE241750DD0083A9BF /* cake.png */,
+				2D7A97EF241750DD0083A9BF /* coffee.png */,
+				2D7A97F0241750DD0083A9BF /* present.png */,
+				2D7A97F1241750DD0083A9BF /* trip.png */,
+				2D7A97ED241750DD0083A9BF /* dog.png */,
+			);
+			name = giftImage;
+			path = ../../giftImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +280,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7A97F5241750DD0083A9BF /* present.png in Resources */,
+				2D7A97F2241750DD0083A9BF /* dog.png in Resources */,
+				2D7A97F6241750DD0083A9BF /* trip.png in Resources */,
+				2D7A97F4241750DD0083A9BF /* coffee.png in Resources */,
+				2D7A97F3241750DD0083A9BF /* cake.png in Resources */,
 				2D6572AB2404F16F00FA45FE /* LaunchScreen.storyboard in Resources */,
 				2D6572A82404F16F00FA45FE /* Assets.xcassets in Resources */,
 				2D6572A62404F16E00FA45FE /* Main.storyboard in Resources */,
@@ -283,7 +318,9 @@
 				2D7A97E42411776F0083A9BF /* Letter.swift in Sources */,
 				2D6572D12404F75200FA45FE /* ThirdViewController.swift in Sources */,
 				2D6572D32404F7C900FA45FE /* TabBarController.swift in Sources */,
+				2D7A97E624169EAF0083A9BF /* GiftImageCollectionViewController.swift in Sources */,
 				2D6572D52408F16800FA45FE /* ViewController.swift in Sources */,
+				2D7A97F8241824B50083A9BF /* Profile.swift in Sources */,
 				2D65729D2404F16E00FA45FE /* AppDelegate.swift in Sources */,
 				2D65729F2404F16E00FA45FE /* SceneDelegate.swift in Sources */,
 			);

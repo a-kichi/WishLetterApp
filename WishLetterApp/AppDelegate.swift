@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
@@ -24,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let content = UNMutableNotificationContent()
-        content.title = "通知タイトル"
-        content.body = "通知本文"
+        content.title = "DearMe"
+        content.body = "こんにちは！未来の自分"
         content.sound = UNNotificationSound.default
         // 1秒後に通知を出すようにする
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

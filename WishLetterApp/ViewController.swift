@@ -36,6 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var spanArray: [Int] = []
     var receiveDateArray: [String] = []
     
+    var selectedImageInfo : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,9 +104,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let receive = datePicker.date
         //差分を出す
         let span = receive.timeIntervalSince(sentDate)
-        //各タプル
-        //let letter = (sentdate: sentDate, text:writeTextView.text!, span: Int(span), notificationID: String(index))
-        
+
         //各配列
         sentDateArray.append(sentDate)
         letterTextArray.append(writeTextView.text)
