@@ -20,6 +20,9 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var profileSaveData: UserDefaults = UserDefaults.standard
     
+    var userName: String!
+    var birthday: String!
+    var goal: String!
     
     
     override func viewDidLoad() {
@@ -29,7 +32,14 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         birthdayTextField.delegate = self
         goalTextField.delegate = self
         profileScrollView.delegate = self
+        
+        if profileSaveData.object(forKey: "userName") != nil {
+            userName = (profileSaveData.object(forKey: "sentDate") as? String)
+            birthday  = (profileSaveData.object(forKey: "birthday") as? String)
+            goal = (profileSaveData.object(forKey: "goal") as? String)
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +54,14 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func toUpdateProfileButton(_ sender: Any) {
         
+        userName = userNameTextField.text
+        birthday = birthdayTextField.text
+        goal = goalTextField.text
+        
+        profileSaveData.set(userName, forKey: "userName")
+        profileSaveData.set(birthday, forKey: "birthday")
+        profileSaveData.set(goal, forKey: "gaol")
+
     }
     
 
@@ -68,6 +86,7 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dismiss(animated: true, completion: nil)
         
     }
+
     
     // Notificationを設定
     func configureObserver() {
