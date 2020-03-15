@@ -33,17 +33,22 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         goalTextField.delegate = self
         profileScrollView.delegate = self
         
-        if profileSaveData.object(forKey: "userName") != nil {
-            userName = (profileSaveData.object(forKey: "sentDate") as? String)
-            birthday  = (profileSaveData.object(forKey: "birthday") as? String)
-            goal = (profileSaveData.object(forKey: "goal") as? String)
-        }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureObserver()
+        print(profileSaveData)
+        if profileSaveData.object(forKey: "profileSaveData") != nil {
+            profileImage.image = profileSaveData.object(forKey: "profileSaveData") as? UIImage
+        }
+        
+        if profileSaveData.object(forKey: "userName") != nil {
+            userName = (profileSaveData.object(forKey: "sentDate") as? String)
+            birthday  = (profileSaveData.object(forKey: "birthday") as? String)
+            goal = (profileSaveData.object(forKey: "goal") as? String)
+        }
     }
     
     //リターンキー
@@ -74,28 +79,29 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         present(alert, animated: true, completion: nil)
     }
     
-
+  
     //ImageViewTapAction
-  //  @IBAction func TapImage(_ sender: Any) {
-  //      if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-  //          let ImagePicker = UIImagePickerController()
-  //          ImagePicker.sourceType = .photoLibrary
-  //          ImagePicker.delegate = self
-  //
-  //          ImagePicker.allowsEditing = true
-  //
-  //          present(ImagePicker, animated: true, completion: nil)
-  //
-  //      }
-  //
-  //  }
-    
+    @IBAction func TapImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let ImagePicker = UIImagePickerController()
+            ImagePicker.sourceType = .photoLibrary
+            ImagePicker.delegate = self
+   
+            ImagePicker.allowsEditing = true
+   
+            present(ImagePicker, animated: true, completion: nil)
+   
+        }
+   
+    }
     //画像表示
-   // func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-   //     profileImage.image = info[.editedImage]as? UIImage
-   //     dismiss(animated: true, completion: nil)
-   //
-  //  }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        profileImage.image = info[.editedImage]as? UIImage
+        // UserDefaultsへ保存
+        profileSaveData.setUIImageToData(image: profileImage.image!, forKey: "profileSaveData")
+        dismiss(animated: true, completion: nil)
+   
+    }
 
     
     // Notificationを設定
@@ -125,7 +131,7 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
       
     // キーボードが現れたときにviewをずらす
     @objc func keyboardWillShow(notification: Notification?) {
-      let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        _ = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
       let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
       UIView.animate(withDuration: duration!) {
         self.view.transform = CGAffineTransform(translationX: 0, y: -100)
@@ -140,4 +146,24 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
       }
     }
     
+}
+
+extension UserDefaults {
+    // 保存したいUIImage, 保存するUserDefaults, Keyを取得
+    func setUIImageToData(image: UIImage, forKey: String) {
+        // UIImageをData型へ変換
+        let nsdata = image.pngData()
+        // UserDefaultsへ保存
+        self.set(nsdata, forKey: forKey)
+    }
+    // 参照するUserDefaults, Keyを取得, UIImageを返す
+    func image(forKey: String) -> UIImage {
+        // UserDefaultsからKeyを基にData型を参照
+        let data = self.data(forKey: forKey)
+        // UIImage型へ変換
+        let returnImage = UIImage(data: data!)
+        // UIImageを返す
+        return returnImage!
+    }
+
 }

@@ -13,9 +13,6 @@ import UserNotifications
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    var receiveDateArray: [String] = []
-    
-    let todayDate = Date()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,10 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         center.removeAllPendingNotificationRequests();
         // 「通知を許可しますか？」ダイアログを出す
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in if granted { print("通知許可")}
+        center.delegate = self
         }
         return true
+        
+        
         }
 
+    
     
     // MARK: UISceneSession Lifecycle
 

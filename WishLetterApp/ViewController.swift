@@ -121,6 +121,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         saveData.set(receiveDateArray, forKey: "receiveDate")
         
         dismiss(animated: true, completion: nil)
+        
+        //通知
+        let content = UNMutableNotificationContent()
+        content.title = "DearMe"
+        content.body = "\(sentDate)から届きました"
+        content.sound = UNNotificationSound.default
+        // span秒後に通知を出すようにする
+        _ = UNTimeIntervalNotificationTrigger(timeInterval: span , repeats: false)
+
 
     }
     
