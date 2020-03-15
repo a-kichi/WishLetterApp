@@ -11,12 +11,9 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate{
     
-    @IBOutlet var selectTextField: UITextField!
-    
+    @IBOutlet var selectTextField: UITextField! 
     @IBOutlet var writeTextView: UITextView!
-    
     @IBOutlet var scrollView: UIScrollView!
-    
     @IBOutlet var giftImageView: UIImageView!
     
     var datePicker: UIDatePicker = UIDatePicker()

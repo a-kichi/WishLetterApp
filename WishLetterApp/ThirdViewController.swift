@@ -38,16 +38,22 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.configureObserver()
         print(profileSaveData)
+        
         if profileSaveData.object(forKey: "profileSaveData") != nil {
-            profileImage.image = profileSaveData.object(forKey: "profileSaveData") as? UIImage
+            profileImage.image = profileSaveData.image(forKey: "profileSaveData")
         }
         
         if profileSaveData.object(forKey: "userName") != nil {
-            userName = (profileSaveData.object(forKey: "sentDate") as? String)
+            userName = (profileSaveData.object(forKey: "userName") as? String)
             birthday  = (profileSaveData.object(forKey: "birthday") as? String)
             goal = (profileSaveData.object(forKey: "goal") as? String)
+            
+            userNameTextField.text = userName
+            birthdayTextField.text = birthday
+            goalTextField.text = goal
         }
     }
     
@@ -65,7 +71,7 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         profileSaveData.set(userName, forKey: "userName")
         profileSaveData.set(birthday, forKey: "birthday")
-        profileSaveData.set(goal, forKey: "gaol")
+        profileSaveData.set(goal, forKey: "goal")
 
         let alert: UIAlertController = UIAlertController(title: "更新完了！",message: "",preferredStyle: .alert)
         
