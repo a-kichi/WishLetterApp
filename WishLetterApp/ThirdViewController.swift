@@ -62,30 +62,40 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         profileSaveData.set(birthday, forKey: "birthday")
         profileSaveData.set(goal, forKey: "gaol")
 
+        let alert: UIAlertController = UIAlertController(title: "更新完了！",message: "",preferredStyle: .alert)
+        
+        alert.addAction(
+            UIAlertAction(
+                title:"OK",
+                style: .default, handler:{ action in
+                print("更新")
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
 
     //ImageViewTapAction
-    @IBAction func TapImage(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let ImagePicker = UIImagePickerController()
-            ImagePicker.sourceType = .photoLibrary
-            ImagePicker.delegate = self
-            
-            ImagePicker.allowsEditing = true
-            
-            present(ImagePicker, animated: true, completion: nil)
-            
-        }
-    
-    }
+  //  @IBAction func TapImage(_ sender: Any) {
+  //      if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+  //          let ImagePicker = UIImagePickerController()
+  //          ImagePicker.sourceType = .photoLibrary
+  //          ImagePicker.delegate = self
+  //
+  //          ImagePicker.allowsEditing = true
+  //
+  //          present(ImagePicker, animated: true, completion: nil)
+  //
+  //      }
+  //
+  //  }
     
     //画像表示
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        profileImage.image = info[.editedImage]as? UIImage
-        dismiss(animated: true, completion: nil)
-        
-    }
+   // func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+   //     profileImage.image = info[.editedImage]as? UIImage
+   //     dismiss(animated: true, completion: nil)
+   //
+  //  }
 
     
     // Notificationを設定
@@ -118,7 +128,7 @@ class ThirdViewController: UIViewController, UIImagePickerControllerDelegate, UI
       let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
       let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
       UIView.animate(withDuration: duration!) {
-        self.view.transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+        self.view.transform = CGAffineTransform(translationX: 0, y: -100)
       }
     }
       

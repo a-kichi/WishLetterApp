@@ -12,8 +12,10 @@ import UserNotifications
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
-
+    
+    var receiveDateArray: [String] = []
+    
+    let todayDate = Date()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,20 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // 「通知を許可しますか？」ダイアログを出す
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in if granted { print("通知許可")}
         }
-        
-        let content = UNMutableNotificationContent()
-        content.title = "DearMe"
-        content.body = "こんにちは！未来の自分"
-        content.sound = UNNotificationSound.default
-        // 1秒後に通知を出すようにする
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "HogehogeNotification", content: content, trigger: trigger)
-        
-        center.add(request)
-        center.delegate = self
         return true
-    }
-    
+        }
+
     
     // MARK: UISceneSession Lifecycle
 

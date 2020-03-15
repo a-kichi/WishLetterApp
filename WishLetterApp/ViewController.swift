@@ -186,25 +186,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     //ImageViewTapAction
-    @IBAction func TapImage(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let ImagePicker = UIImagePickerController()
-            ImagePicker.sourceType = .photoLibrary
-            ImagePicker.delegate = self
-            ImagePicker.allowsEditing = true
-            
-            present(ImagePicker, animated: true, completion: nil)
-            
-        }
+   // @IBAction func TapImage(_ sender: Any) {
+   //     if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+   //         let ImagePicker = UIImagePickerController()
+   //         ImagePicker.sourceType = .photoLibrary
+   //         ImagePicker.delegate = self
+   //         ImagePicker.allowsEditing = true
+   //
+   //         present(ImagePicker, animated: true, completion: nil)
+   //
+   //     }
+   //
+   // }
     
-    }
-    
-    //画像表示
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        giftImageView.image = info[.editedImage]as? UIImage
-        dismiss(animated: true, completion: nil)
+  //  //画像表示
+   // func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+   //     giftImageView.image = info[.editedImage]as? UIImage
+   //     dismiss(animated: true, completion: nil)
         
-    }
+  //  }
 
 }
 
