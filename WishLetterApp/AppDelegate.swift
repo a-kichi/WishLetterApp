@@ -14,19 +14,31 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    //プッシュ通知の許可をユーザーに要求する
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions:
+                            [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         
-        let center = UNUserNotificationCenter.current()
-        // トリガーされている全ての通知をトリガー解除する
-        center.removeAllPendingNotificationRequests();
-        // 「通知を許可しますか？」ダイアログを出す
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in if granted { print("通知許可")}
-        center.delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        
+        UNUserNotificationCenter.current().requestAuthorization(options:
+                                    [.alert,.sound,.badge]) { (granted, error) in
+            
         }
+        
         return true
+    }
+    
+    //アプリ内(フォアグラウンド)でプッシュ通知を送る
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                        willPresent notification: UNNotification,
+                            withCompletionHandler completionHandler:
+                                @escaping (UNNotificationPresentationOptions) -> Void) {
         
+        completionHandler([.alert,.sound])
         
-        }
+    }
 
     
     
@@ -44,16 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    //アプリ内(フォアグラウンド)でプッシュ通知を送る
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                        willPresent notification: UNNotification,
-                            withCompletionHandler completionHandler:
-                                @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.alert,.sound])
-        
-    }
-
 
 }
 

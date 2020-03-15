@@ -93,107 +93,95 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qk2-LQ-6xf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zr7-Nj-230">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ixe-z1-qCI">
-                                                <rect key="frame" x="67.5" y="310" width="240" height="209"/>
-                                                <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="209" id="EDY-8c-R2X"/>
-                                                    <constraint firstAttribute="width" constant="240" id="mr0-25-u8P"/>
-                                                </constraints>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="未来の自分に手紙を書きましょう！">
-                                                        <attributes>
-                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <font key="NSFont" size="22" name="HiraginoSans-W3"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEW-dc-SZr">
-                                                <rect key="frame" x="30" y="50" width="62" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <state key="normal" title="もどる"/>
-                                                <connections>
-                                                    <action selector="toBackButton" destination="18B-ID-RZf" eventType="touchUpInside" id="9FY-1c-FZQ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yZ-ot-dHZ">
-                                                <rect key="frame" x="123" y="554" width="129" height="47"/>
-                                                <color key="backgroundColor" red="1" green="0.88015794749999998" blue="0.85485714670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="47" id="9Qq-UR-owu"/>
-                                                    <constraint firstAttribute="width" constant="129" id="Pdi-fR-72d"/>
-                                                </constraints>
-                                                <state key="normal" title="おくる！">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="toSendButton" destination="18B-ID-RZf" eventType="touchUpInside" id="UYm-c3-MEr"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSo-CV-mpe">
-                                                <rect key="frame" x="80" y="251" width="144" height="34"/>
-                                                <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="144" id="gjC-uf-hXT"/>
-                                                    <constraint firstAttribute="height" constant="34" id="pK2-n7-OTP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="の自分へ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJO-RA-p9A">
-                                                <rect key="frame" x="244" y="251" width="93.5" height="28"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake.png" translatesAutoresizingMaskIntoConstraints="NO" id="MWo-3k-RnU">
-                                                <rect key="frame" x="124.5" y="100" width="126" height="126"/>
-                                                <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="126" id="Uun-eM-JsQ"/>
-                                                    <constraint firstAttribute="height" constant="126" id="Vv2-3T-K5j"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="xcK-UZ-OJu" appends="YES" id="xki-pO-jvr"/>
-                                                </connections>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ixe-z1-qCI">
+                                        <rect key="frame" x="67.5" y="290" width="240" height="209"/>
+                                        <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="8yZ-ot-dHZ" firstAttribute="centerX" secondItem="Zr7-Nj-230" secondAttribute="centerX" id="2Yo-Yh-HM6"/>
-                                            <constraint firstItem="MWo-3k-RnU" firstAttribute="top" secondItem="Zr7-Nj-230" secondAttribute="top" constant="100" id="77Q-xl-IP0"/>
-                                            <constraint firstItem="Ixe-z1-qCI" firstAttribute="top" secondItem="FSo-CV-mpe" secondAttribute="bottom" constant="25" id="7GZ-P3-wq7"/>
-                                            <constraint firstItem="8yZ-ot-dHZ" firstAttribute="top" secondItem="Ixe-z1-qCI" secondAttribute="bottom" constant="35" id="DZD-IE-8Rb"/>
-                                            <constraint firstItem="UJO-RA-p9A" firstAttribute="top" secondItem="MWo-3k-RnU" secondAttribute="bottom" constant="25" id="JHE-5l-kv9"/>
-                                            <constraint firstItem="MWo-3k-RnU" firstAttribute="centerX" secondItem="Zr7-Nj-230" secondAttribute="centerX" id="Leg-jd-Iy3"/>
-                                            <constraint firstItem="FSo-CV-mpe" firstAttribute="top" secondItem="MWo-3k-RnU" secondAttribute="bottom" constant="15" id="Vxr-el-Hh9"/>
-                                            <constraint firstItem="iEW-dc-SZr" firstAttribute="leading" secondItem="Zr7-Nj-230" secondAttribute="leading" constant="30" id="WS4-Yv-wTU"/>
-                                            <constraint firstItem="iEW-dc-SZr" firstAttribute="top" secondItem="Zr7-Nj-230" secondAttribute="top" constant="50" id="Zvj-ks-s9f"/>
-                                            <constraint firstItem="FSo-CV-mpe" firstAttribute="leading" secondItem="Zr7-Nj-230" secondAttribute="leading" constant="80" id="q9i-on-KOw"/>
-                                            <constraint firstItem="UJO-RA-p9A" firstAttribute="leading" secondItem="FSo-CV-mpe" secondAttribute="trailing" constant="20" id="qYr-1k-f0d"/>
-                                            <constraint firstItem="Ixe-z1-qCI" firstAttribute="centerX" secondItem="Zr7-Nj-230" secondAttribute="centerX" id="rdc-Za-0EU"/>
-                                            <constraint firstItem="FSo-CV-mpe" firstAttribute="top" secondItem="MWo-3k-RnU" secondAttribute="bottom" constant="25" id="zXc-wM-0AB"/>
+                                            <constraint firstAttribute="height" constant="209" id="EDY-8c-R2X"/>
+                                            <constraint firstAttribute="width" constant="240" id="mr0-25-u8P"/>
                                         </constraints>
-                                    </view>
+                                        <attributedString key="attributedText">
+                                            <fragment content="未来の自分に手紙を書きましょう！">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="22" name="HiraginoSans-W3"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake.png" translatesAutoresizingMaskIntoConstraints="NO" id="MWo-3k-RnU">
+                                        <rect key="frame" x="124.5" y="80" width="126" height="126"/>
+                                        <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="126" id="HgM-oZ-bHH"/>
+                                            <constraint firstAttribute="width" constant="126" id="Uun-eM-JsQ"/>
+                                            <constraint firstAttribute="height" constant="126" id="Vv2-3T-K5j"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="126" id="Y5s-4v-czM"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="xcK-UZ-OJu" appends="YES" id="xki-pO-jvr"/>
+                                        </connections>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEW-dc-SZr">
+                                        <rect key="frame" x="30" y="50" width="62" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <state key="normal" title="もどる"/>
+                                        <connections>
+                                            <action selector="toBackButton" destination="18B-ID-RZf" eventType="touchUpInside" id="9FY-1c-FZQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yZ-ot-dHZ">
+                                        <rect key="frame" x="123" y="539" width="129" height="47"/>
+                                        <color key="backgroundColor" red="1" green="0.88015794749999998" blue="0.85485714670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="9Qq-UR-owu"/>
+                                            <constraint firstAttribute="width" constant="129" id="Pdi-fR-72d"/>
+                                        </constraints>
+                                        <state key="normal" title="おくる！">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="toSendButton" destination="18B-ID-RZf" eventType="touchUpInside" id="UYm-c3-MEr"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSo-CV-mpe">
+                                        <rect key="frame" x="70" y="226" width="144" height="34"/>
+                                        <color key="backgroundColor" red="0.99785953760000001" green="0.98700755829999998" blue="0.82742470499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="144" id="gjC-uf-hXT"/>
+                                            <constraint firstAttribute="height" constant="34" id="pK2-n7-OTP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="の自分へ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJO-RA-p9A">
+                                        <rect key="frame" x="229" y="231" width="93.5" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Zr7-Nj-230" firstAttribute="centerX" secondItem="qk2-LQ-6xf" secondAttribute="centerX" id="Bse-Id-yoh"/>
-                                    <constraint firstItem="Zr7-Nj-230" firstAttribute="top" secondItem="qk2-LQ-6xf" secondAttribute="top" id="K8J-Ra-ZPN"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zr7-Nj-230" secondAttribute="bottom" id="LWC-bE-XKO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zr7-Nj-230" secondAttribute="trailing" id="ejj-mn-VQv"/>
-                                    <constraint firstItem="Zr7-Nj-230" firstAttribute="leading" secondItem="qk2-LQ-6xf" secondAttribute="leading" id="kfB-GY-eWY"/>
+                                    <constraint firstItem="MWo-3k-RnU" firstAttribute="top" secondItem="mEe-ft-eCQ" secondAttribute="top" constant="80" id="DJc-qk-eBQ"/>
+                                    <constraint firstItem="iEW-dc-SZr" firstAttribute="top" secondItem="mEe-ft-eCQ" secondAttribute="top" constant="50" id="HZC-fX-eSh"/>
+                                    <constraint firstItem="UJO-RA-p9A" firstAttribute="leading" secondItem="FSo-CV-mpe" secondAttribute="trailing" constant="15" id="KYm-VW-wgE"/>
+                                    <constraint firstItem="iEW-dc-SZr" firstAttribute="leading" secondItem="mEe-ft-eCQ" secondAttribute="leading" constant="30" id="PXg-Pq-Z5v"/>
+                                    <constraint firstItem="8yZ-ot-dHZ" firstAttribute="top" secondItem="Ixe-z1-qCI" secondAttribute="bottom" constant="40" id="QFW-RV-O5h"/>
+                                    <constraint firstItem="8yZ-ot-dHZ" firstAttribute="centerX" secondItem="qk2-LQ-6xf" secondAttribute="centerX" id="X9z-py-Peu"/>
+                                    <constraint firstItem="Ixe-z1-qCI" firstAttribute="top" secondItem="FSo-CV-mpe" secondAttribute="bottom" constant="30" id="YVz-eZ-CdW"/>
+                                    <constraint firstItem="Ixe-z1-qCI" firstAttribute="centerX" secondItem="qk2-LQ-6xf" secondAttribute="centerX" id="qml-nV-rIL"/>
+                                    <constraint firstItem="FSo-CV-mpe" firstAttribute="top" secondItem="MWo-3k-RnU" secondAttribute="bottom" constant="20" id="rLd-8b-cHE"/>
+                                    <constraint firstItem="UJO-RA-p9A" firstAttribute="top" secondItem="MWo-3k-RnU" secondAttribute="bottom" constant="25" id="s67-Fz-OdN"/>
+                                    <constraint firstItem="FSo-CV-mpe" firstAttribute="leading" secondItem="mEe-ft-eCQ" secondAttribute="leading" constant="70" id="w3m-D7-mQk"/>
+                                    <constraint firstItem="MWo-3k-RnU" firstAttribute="centerX" secondItem="qk2-LQ-6xf" secondAttribute="centerX" id="xEF-RS-m9y"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="T4s-cW-4B1"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="mEe-ft-eCQ"/>

@@ -120,17 +120,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
         
         //通知
+        
         let content = UNMutableNotificationContent()
         content.title = "DearMe"
-        content.body = "\(sentDate)から届きました"
+        content.body = "\(dateString(date: sentDate as NSDate))から届きました"
         content.sound = UNNotificationSound.default
+        
         // span秒後に通知を出すようにする
-        _ = UNTimeIntervalNotificationTrigger(timeInterval: span , repeats: false)
+        print(span)
+        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        if span > 0{
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: span, repeats: false)
+        }else{
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5 , repeats: false)
+        }
+        
+        //通知のリクエスト
+        let request = UNNotificationRequest(identifier: "ID", content: content,
+                                            trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
 
     }
     
     
+    //DateをStringにしてる
+    private func dateString(date: NSDate) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        let dateString: String = dateFormatter.string(from: date as Date)
+        return dateString
+    }
     //リターン押したら消える
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
       textField.resignFirstResponder()
@@ -168,7 +190,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         _ = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         UIView.animate(withDuration: duration!) {
-          self.view.transform = CGAffineTransform(translationX: 0, y: -150)
+          self.view.transform = CGAffineTransform(translationX: 0, y: -100)
         }
       }
         
